@@ -1,0 +1,12 @@
+FROM node:latest
+
+WORKDIR /mnt/e/LEO/Professionnel/StageCarrefour/III-Challenge1/projet
+
+LABEL maintainer="Leo Ressayre"
+
+RUN apt update -y
+RUN apt upgrade -y
+COPY package*.json ./
+
+RUN npm install
+CMD [ "node", "index.js"]
