@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 #metadata
 LABEL maintainer="Leo Ressayre" \
       name="iota_helloword" \
-      version="0.1"
+      version="1.0"
 
 #Install packages
 RUN apt update -y
