@@ -1,12 +1,23 @@
 FROM node:latest
 
-WORKDIR /mnt/e/LEO/Professionnel/StageCarrefour/III-Challenge1/projet
+#set directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-LABEL maintainer="Leo Ressayre"
+#metadata
+LABEL maintainer="Leo Ressayre" \
+      name="iota_helloword" \
+      version="0.1"
 
+#Install packages
 RUN apt update -y
 RUN apt upgrade -y
-COPY package*.json ./
+# COPY package.jason /usr/src/app/
+COPY package-lock.json /usr/src/app/
+
+COPY . /usr/src/app
 
 RUN npm install
+
+#run project
 CMD [ "node", "index.js"]
