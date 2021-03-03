@@ -1,15 +1,17 @@
  steps:
- - name: 'gcr.io/cloud-builders/docker'
-   entrypoint: 'bash'
-   args: ['-c', 'docker login --username=$$USERNAME --password=$$PASSWORD']
-   secretEnv: ['USERNAME', 'PASSWORD']
- - name: "gcr.io/cloud-builders/docker"
-   entrypoint: 'bash'
-   args: ['-c', 'docker run $$USERNAME/iota_helloword:latest']
-   secretEnv: ['USERNAME']
- availableSecrets:
-   secretManager:
-   - versionName: projects/stage-carr-challenge-iii/secrets/docker-password/versions/1
-     env: 'PASSWORD'
-   - versionName: projects/stage-carr-challenge-iii/secrets/docker-username/versions/1
-     env: 'USERNAME'
+  - name: 'eu.gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'eu.gcr.io/stage-carr-challenge-iii/iota_helloword_image', '.']
+#  - name: 'eu.gcr.io/cloud-builders/docker'
+#    entrypoint: 'bash'
+#    args: ['-c', 'docker login --username=$$USERNAME --password=$$PASSWORD']
+#    secretEnv: ['USERNAME', 'PASSWORD']
+#  - name: "gcr.io/cloud-builders/docker"
+#    entrypoint: 'bash'
+#    args: ['-c', 'docker run $$USERNAME/iota_helloword:latest']
+#    secretEnv: ['USERNAME']
+#  availableSecrets:
+#    secretManager:
+#    - versionName: projects/stage-carr-challenge-iii/secrets/docker-password/versions/1
+#      env: 'PASSWORD'
+#    - versionName: projects/stage-carr-challenge-iii/secrets/docker-username/versions/1
+#      env: 'USERNAME'
